@@ -9,19 +9,19 @@ for seat in string_list:
     assert(len(bit_str) == 7)
     bit_str = bit_str.replace("F", "0")
     bit_str = bit_str.replace("B", "1")
-    print(bit_str)
+    # print(bit_str)
     row_n = int(bit_str,2)
-    print(row_n)
+    #print(row_n)
     bit_str = (seat[7:]).strip()
     assert(len(bit_str) == 3)
-    print(bit_str)
+    # print(bit_str)
     bit_str =bit_str.replace("R", "1")
     bit_str =bit_str.replace("L", "0") 
     seat_n = int(bit_str,2)
-    print(seat_n)
+    # print(seat_n)
     Ids.append(row_n*8 +seat_n)
     score = max(score, row_n*8 +seat_n)
-    print(score)
+    # print(score)
 
 
 print(score)
@@ -55,3 +55,9 @@ for seat in all_seats:
             print("win")
             print(scr)
 
+##the i woke up and realized im a morron soln
+with open("day5.txt", "r") as data_file:
+    string_list= data_file.readlines()
+from functools import reduce 
+print("part1:", reduce(lambda x,y: max(x,y), [int(line.strip().replace("F", "0").replace("B", "1").replace("R", "1").replace("L", "0"),2) for line in string_list]))
+print("part2:", (reduce(lambda x,y: y if x-y==-1 else x, sorted([int(line.strip().replace("F", "0").replace("B", "1").replace("R", "1").replace("L", "0"),2) for line in string_list])) +1))
