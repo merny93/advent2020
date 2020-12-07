@@ -44,30 +44,47 @@ for idx, line in enumerate(data_stripped):
     for rule in rules:
         idy = bag_types.index(rule.split(" bag")[0].split(" ", 1)[1])
         mat[idx,idy] = int(rule.split(" ")[0])
-mat = mat.T
-print(mat)
-
-N = 100
 
 good_idx = bag_types.index("shiny gold")
-print(good_idx)
-count = 0
-for i in range(len(bag_types)):
-    vec = np.zeros(len(bag_types), dtype=int)
-    vec[i] = 1
-    res = np.dot(mat, vec)
-    if res[good_idx] != 0:
-        count += 1
-        continue
-    for i in range(N):
-        res = np.dot(mat,res)
-        if res[good_idx] != 0:
-            count += 1
-            break
-        if np.sum(res) == 0:
-            break
+N = 100
 
-print(count)
+vec = np.zeros(len(bag_types), dtype=int)
+vec[good_idx] = 1
+for i in range(N):
+    new_vec = np.dot(mat, vec) + vec
+    if ((new_vec >0) == (vec > 0 )).all():
+        count = np.count_nonzero(new_vec)
+        break
+    vec = new_vec
+
+
+print("part1:", count-1)
+
+
+mat = mat.T
+#print(mat)
+
+
+
+#this was dumb
+#print(good_idx)
+# count = 0
+# for i in range(len(bag_types)):
+#     vec = np.zeros(len(bag_types), dtype=int)
+#     vec[i] = 1
+#     res = np.dot(mat, vec)
+#     if res[good_idx] != 0:
+#         count += 1
+#         continue
+#     for i in range(N):
+#         res = np.dot(mat,res)
+#         if res[good_idx] != 0:
+#             count += 1
+#             break
+#         if np.sum(res) == 0:
+#             break
+
+# print(count)
 
 count = 0
 vec = np.zeros(len(bag_types), dtype=int)
@@ -79,7 +96,7 @@ for i in range(N):
     if the_sum == 0:
         break
 
-print(count)
+print("part2:",count)
 
 exit()
 print(get_enter(sl)[-1])
