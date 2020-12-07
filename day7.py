@@ -64,6 +64,8 @@ for i in range(len(bag_types)):
         if res[good_idx] != 0:
             count += 1
             break
+        if np.sum(res) == 0:
+            break
 
 print(count)
 
