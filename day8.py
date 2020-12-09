@@ -45,7 +45,9 @@ while True:
         break
 
 print(acc)
-
+from ass_tools import Program
+test = Program(instruction_set)
+print("test", test.run_program())
 N = len(instruction_set)
 
 for i in range(N):
