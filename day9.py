@@ -20,7 +20,6 @@ def gen_legal(arr):
     return list(set(legal))
 
 legal = gen_legal(num_list[:25])
-print(legal)
 for i in range(25, len(num_list)):
     N = int(num_list[i])
     legal = gen_legal(num_list[i-25:i])
