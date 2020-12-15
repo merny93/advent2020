@@ -30,35 +30,20 @@ start = int(data[0])
 
 bus = [int(x) for x in data[1].split(",") if x != "x"]
 print(bus)
-# import numpy as np
+import numpy as np
 
-# bus = np.array(bus)
-# for i in range(1000):
+bus = np.array(bus)
+for i in range(1000):
 
-#     leave = (start+i)%(bus)
-#     if np.min(leave) == 0:
-#         print("hey")
-#         break
+    leave = (start+i)%(bus)
+    if np.min(leave) == 0:
+        print("hey")
+        break
 
-# print(leave)
-# print(bus[np.argmin(leave)] * i)
+#print(leave)
+print(bus[np.argmin(leave)] * i)
 
-# # depart = 1068700
-# # while True:
-# #     depart += 1
-# #     won = True
-# #     for idx, cond in enumerate(data[1].split(",")):
-# #         if cond == "x":
-# #             pass
-# #         else:
-# #             cond = int(cond)
-# #             if (depart+idx)%cond!=0:
-# #                 won = False
-# #                 break
-# #     if won:
-# #         print(depart)
-# #         exit()
-# #     print(depart)
+
 
 # Python 3.6
 from functools import reduce
@@ -84,8 +69,8 @@ def mul_inv(a, b):
     return x1
  
  
-n = list(bus)
+n = [int(x) for x in data[1].split(",") if x != "x"]
 a = reduce(lambda x, y: x + [int(y) - len(x)] if y != "x" else x + ["x"], data[1].split(","), [])
 a = list(filter(lambda x: False if x == "x" else True, a))
-print(a)
+#print(a)
 print(chinese_remainder(n, a))
