@@ -66,9 +66,6 @@ def check_legal(rule_try, rule_book, string, place):
 the_good_good = []
 for message in messages:
     good, ze_len = check_legal(rules[0], rules, message, 0)
-    if good:
-        print("hello")
     if good and ze_len==len(message):
         the_good_good.append(message)
-        print(message)
 print(len(the_good_good))

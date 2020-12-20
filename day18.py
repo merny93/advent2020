@@ -39,3 +39,11 @@ def eval(exp):
 
 res = []
 for exp in expressions:
+
+
+class Stupid_num:
+    def __init__(self, val):
+        self.val = val
+    def __add__(self, other):
+        return Stupid_num(self.val * other.val)
+        
